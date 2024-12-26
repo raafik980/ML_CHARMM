@@ -41,8 +41,7 @@ conda activate qmhubenv
 #QMHub
 #------
 cd $ML_CHARMM_DIR
-git clone https://github.com/panxl/qmhub.git
-cd qmhub
+cd qmhub #  Source: https://github.com/panxl/qmhub.git
 pip install .
 # (test 'import qmhub' in ipython)
 
@@ -61,4 +60,13 @@ make install
 cp python/helpmelib.cpython-39-x86_64-linux-gnu.so $CONDA_ENV_DIR/lib/python3.9/site-packages/qmhub
 ```
 
-#### 4. Setup CHARMM with helPME
+#### 4. Setup modified CHARMM with QMHub Interface
+- Follow the instructions at [charmm.org](https://academiccharmm.org/) to download the CHARMM program
+```bash
+#Assign variable to the extracted CHARMM directory from the .tar.gz
+export CHARMM_DIR=/path/to/charmm_dir
+```
+- Implement the modifications as described below
+```bash
+cp $ML_CHARMM_DIR/
+```
