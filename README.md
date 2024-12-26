@@ -69,4 +69,5 @@ export CHARMM_DIR=/path/to/charmm_dir
 - Implement the modifications as described below
 ```bash
 cp $ML_CHARMM_DIR/
+
 ```
