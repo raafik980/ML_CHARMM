@@ -3,7 +3,7 @@
 
 <br>
 
-##### 0. Clone this repository
+#### 0. Clone this repository
 ```bash
 git clone https://github.com/raafik980/ML_CHARMM.git
 cd ML_CHARMM
@@ -12,7 +12,7 @@ cd ML_CHARMM
 export ML_CHARMM_DIR=/path/to/repository
 ```
 
-##### 1. Setup conda environment
+#### 1. Setup conda environment
 - Follow instructions at [conda.io](https://docs.conda.io/projects/conda/en/latest/index.html) to downlaod and install  conda
 
 ```bash
@@ -26,7 +26,7 @@ mamba install -c conda-forge ipython doxygen cmake=3.26.4 make numpy=1.23.4 scip
 export CONDA_ENV_DIR=/path/to/conda/envs/qmhubenv
 ```
 
-##### 2. Setup *sqm*
+#### 2. Setup *sqm*
 - Follow instruction at [ambermd.org](https://ambermd.org/AmberTools.php) to install AmberTools software suite
 
 ```bash
@@ -34,7 +34,7 @@ export CONDA_ENV_DIR=/path/to/conda/envs/qmhubenv
 export SQM_INSTALL_DIR=/path/to/amber_install_dir
 ```
 
-##### 3. Setup QMHub with helPME
+#### 3. Setup QMHub with helPME
 ```bash
 conda activate qmhubenv
 
@@ -61,4 +61,4 @@ make install
 cp python/helpmelib.cpython-39-x86_64-linux-gnu.so $CONDA_ENV_DIR/lib/python3.9/site-packages/qmhub
 ```
 
-##### 4. Setup CHARMM with helPME
+#### 4. Setup CHARMM with helPME
