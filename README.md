@@ -1,7 +1,10 @@
-### QMHub-CHARMM Interface: Step-by-Step Installation and Simulation Guide
+## QMHub-CHARMM Interface:
 > *Details on the interface setup can be found [here](https://raafik980.github.io/posts/charmm-python-interfacer/)*
 
-<br>
+- - -
+
+### Step-by-Step Installation Instructions
+
 
 #### 0. Clone this repository
 ```bash
@@ -63,11 +66,30 @@ cp python/helpmelib.cpython-39-x86_64-linux-gnu.so $CONDA_ENV_DIR/lib/python3.9/
 #### 4. Setup modified CHARMM with QMHub Interface
 - Follow the instructions at [charmm.org](https://academiccharmm.org/) to download the CHARMM program
 ```bash
-#Assign variable to the extracted CHARMM directory from the .tar.gz
+#Assign variable to the extracted CHARMM directory from the eg: c47a1.tar.gz
 export CHARMM_DIR=/path/to/charmm_dir
 ```
-- Implement the modifications as described below
+- Implement the modifications to the CHARMM source files as described below
 ```bash
-cp $ML_CHARMM_DIR/
-
+cp $ML_CHARMM_DIR/charmm_qmhub/source/ltm/psf_ltm.F90 $CHARMM_DIR/source/ltm
+cp $ML_CHARMM_DIR/charmm_qmhub/source/gukint/gukini.F90 $CHARMM_DIR/source/gukint
 ```
+- Install modified CHARMM
+```bash
+conda activate qmhubenv
+
+cd $CHARMM_DIR
+mkdir build_dir
+cd build_dir
+rm -rf * #(clean build directory)
+
+../configure --with-qchem --without-openmm --without-blade --without-cuda --prefix=../install_dir
+make -j4
+make install
+```
+
+- - -
+
+### Simulation Guide
+
+
