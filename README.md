@@ -102,5 +102,12 @@ cd $ML_CHARMM_DIR
 
 tar -xf simulation_files.tar.xz
 cd simulation_files
-cd 
+cd 03_ecoli_dhfr_deltaMLP-AM1
+
+#RUNNING SIMULATION
+#Usage: ./README_UMB_SAMPLE_MD_RUN.sh <CONDA_ENV_NAME> <SQM_INSTALL_DIR> <CHARMM_DIR>
+./README_UMB_SAMPLE_MD_RUN.sh qmhubenv /path/to/amber_install_dir /path/to/charmm_dir
+
+
+
 ```
