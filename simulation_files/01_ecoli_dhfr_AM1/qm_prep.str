@@ -1,0 +1,26 @@
+* QM/MM preparation stream file
+*
+
+
+! Patch for regrouping
+AUTOgen off NOPAtch
+PATC QQO0 HETB 1
+PATC QQO1 HETD 1
+
+! Addlink for QM-link
+ADDLINKATOM QQH1 HETB 1 N7 HETB 1 CA
+ADDLINKATOM QQH2 HETD 1 C12 HETD 1 C11
+
+! Modify charge
+SCALAR CHAR set 0 sele atom HETB 1 CA end
+SCALAR CHAR set -0.22533 sele atom HETB 1 CB end
+SCALAR CHAR set 0.56367 sele atom HETB 1 C15 end
+SCALAR CHAR set 0.02066 sele atom HETB 1 HA end
+SCALAR CHAR set 0 sele atom HETD 1 C11 end
+SCALAR CHAR set -0.64900 sele atom HETD 1 O10 end
+SCALAR CHAR set 0.06200 sele atom HETD 1 H12 end
+SCALAR CHAR set 0.062 sele atom HETD 1 H13 end
+
+! Add charge for zeroing MM total chg
+SCALAR CHAR set -0.346 sele atom HETB 1 N7 end ! -0.370000 !DIFF ADD 0.024
+SCALAR CHAR set 0.112 sele atom HETD 1 C12 end ! 0.109000 !DIFF ADD 0.003

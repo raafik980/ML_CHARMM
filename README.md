@@ -83,7 +83,7 @@ mkdir build_dir
 cd build_dir
 rm -rf * #(clean build directory)
 
-../configure --with-qchem --without-openmm --without-blade --without-cuda --prefix=../install_dir
+../configure --with-qchem --without-openmm --without-blade --without-cuda --prefix=../charmm_install_dir
 make -j4
 make install
 ```

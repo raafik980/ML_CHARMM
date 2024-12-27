@@ -1,0 +1,13 @@
+$comment
+QMHUB control
+correlation in rem specify 'qmhub' to call qmhub instead of qchem
+molecule spec include charge, multiplicity, step(a dummy value)
+$end
+
+$rem 
+$end
+
+$molecule 
+1 1 0
+$end
+

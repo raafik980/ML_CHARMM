@@ -1,0 +1,82 @@
+*Umbrella Sampling Specs
+*
+
+!==========================================================================
+! SPECS
+!-------
+
+set rci = -2.0 ! rc corresponding to initial configuration
+set rcf =  2.0
+set int =  0.1  ! (rcf - rci)/( winmax - 1) )
+
+set binwidth = 0.01
+
+
+calc rc =  @{rci} + ( ( @{win} - 1 ) * @{int} )
+
+calc kumb = 40  !80.0 - ( @{rc} * @{rc} * 15.0 ) ! format: high_k - ( ${rc} * ${rc} * x ) ; x = ( high_k - low_k ) / ( rci * rci )
+
+
+open write formatted unit 51 name step5_window_@{win}_@{cnt}_pmf_@{kumb}_@{rc}.dat
+open write formatted unit 52 name step5_window_@{win}_@{cnt}_rc_values.dat
+open write formatted unit 53 name step5_window_@{win}_@{cnt}_d12_values.dat
+open write formatted unit 54 name step5_window_@{win}_@{cnt}_d23_values.dat
+
+!============================================================================
+!DEFINE REACTION COORDINATE (rc)
+!-------------------------------
+
+rxncor: define A1 point select atom HETD 1 C19 end
+rxncor: define A2 point select atom HETD 1 H24 end
+rxncor: define A3 point select atom HETB 1  C4 end
+
+
+rxncor: define d12 distance A1 A2
+rxncor: define d23 distance A2 A3
+
+!! 'rc' is r(C19(D)-H24(D)) - r(H24(D)-C4(B))
+rxncor: define mean combi d12 1.0 d23 -1.0
+rxncor: set nrxn 1  mean
+
+rxncor: trace mean unit 52
+rxncor: trace d12 unit 53
+rxncor: trace d23 unit 54
+
+!==============================================================================
+!BIAS POTENTIAL TABLE FOR FORM 5 UMBRELLA SAMPLING
+!-------------------------------------------------
+
+OPEN UNIT 71 FORM READ NAME ./qm_bias_umbspec.table
+rxncor: bias unit 71
+close unit 71
+
+!==============================================================================
+! SAVE STATISTICS
+!----------------------------------
+
+rxncor: umbrella name mean form 5 kumb @kumb del0 @rc
+
+calc ld @rc - 0.5
+calc rd @rc + 0.5
+
+calc pcnt = @cnt - 1
+calc pwin = @win - 1
+if  pcnt .eq. 0  then
+   if  pwin .eq. 0 then
+    calc begin = @{nstepe} + 100
+    rxncor: stat name mean  lowdelta @ld hidelta @rd deldel @{binwidth}  start @{begin}
+   endif
+   if  pwin .gt. 0 then
+    rxncor: stat name mean  lowdelta @ld hidelta @rd deldel @{binwidth}  start @{nstepe}
+   endif
+
+
+
+endif
+
+if  pcnt .gt. 0  then
+  rxncor: stat name mean lowdelta @ld hidelta @rd deldel @{binwidth} 
+endif
+
+!=============================================================================
+
