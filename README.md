@@ -61,6 +61,8 @@ cmake .. -DCMAKE_INSTALL_PREFIX=$CONDA_ENV_DIR -DENABLE_OPENMP=ON -DENABLE_MPI=O
 make -j4
 make install
 cp python/helpmelib.cpython-39-x86_64-linux-gnu.so $CONDA_ENV_DIR/lib/python3.9/site-packages/qmhub
+
+cd $ML_CHARMM_DIR
 ```
 
 #### 4. Setup modified CHARMM with QMHub Interface
