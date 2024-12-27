@@ -23,7 +23,7 @@ conda activate
 conda create -n qmhubenv python=3.9
 conda activate qmhubenv
 conda install conda-forge::mamba
-mamba install -c conda-forge ipython doxygen cmake=3.26.4 make numpy=1.23.4 scipy=1.9.3 mkl gawk pybind11 pytorch pytorch-lightning matplotlib mdanalysis multiprocess tqdm
+mamba install -c conda-forge ipython doxygen cmake=3.26.4 make numpy=1.23.4 scipy=1.9.3 mkl gawk pybind11 pytorch pytorch-lightning matplotlib mdanalysis multiprocess tqdm openmpi=4
 
 #Assign variable to the conda environment directory directory
 export CONDA_ENV_DIR=/path/to/conda/envs/qmhubenv
@@ -73,7 +73,7 @@ export CHARMM_DIR=/path/to/charmm_dir
 ```
 - Implement the modifications to the CHARMM source files as described below
 ```bash
-cp $ML_CHARMM_DIR/charmm_qmhub/source/ltm/psf_ltm.F90 $CHARMM_DIR/source/ltm
+cp $ML_CHARMM_DIR/charmm_qmhub/source/ltm/gamess_ltm.F90 $CHARMM_DIR/source/ltm
 cp $ML_CHARMM_DIR/charmm_qmhub/source/gukint/gukini.F90 $CHARMM_DIR/source/gukint
 ```
 - Install modified CHARMM
