@@ -100,7 +100,7 @@ Three example simulations are provided for running with the AM1, SRP-AM1, and &D
 #EXAMPLE ON HOW TO START THE SIMULATION
 cd $ML_CHARMM_DIR
 
-tar -xf simulation_files.tar.xz
+unzip simulation_files.zip
 cd simulation_files
 cd 03_ecoli_dhfr_deltaMLP-AM1
 
