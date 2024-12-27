@@ -30,7 +30,7 @@ export CONDA_ENV_DIR=/path/to/conda/envs/qmhubenv
 ```
 
 #### 2. Setup *sqm*
-- Follow instruction at [ambermd.org](https://ambermd.org/AmberTools.php) to install AmberTools software suite
+- Follow the instructions at [ambermd.org](https://ambermd.org/AmberTools.php) to install AmberTools software suite
 
 ```bash
 #Assign variable to sqm (AmberTools) installation directory
